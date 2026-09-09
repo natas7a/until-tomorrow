@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>until tomorrow | youth-led ngo</title>
+    
+    <!-- Import Inter Font for default use -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS VARIABLES & THEMES --- */
+        :root {
+            /* Core Palette */
+            --off-white: #F4F4F4;
+            --off-black: #1A1A1A;
+            --neon-lime: #d0ed0e;
+            --steel-blue: #2e6561;
+            --lavender: #928fb5;
+
+            /* Default Theme Variables */
+            --bg-main: var(--off-white);
+            --text-main: var(--off-black);
+            --bg-alt: var(--off-black);
+            --text-alt: var(--off-white);
+            
+            --text-muted-light: #333333;
+            --text-muted-dark: #E0E0E0;
+            
+            --card-bg: #FFFFFF;
+            --card-border: #E0E0E0;
+
+            /* Base Font Size */
+            --base-font-size: 16px;
+        }
+
+        /* --- DARK MODE THEME --- */
+        html.dark-mode {
+            --bg-main: #141414;
+            --text-main: #F4F4F4;
+            --bg-alt: #0A0A0A;
+            --text-alt: #F4F4F4;
+            
+            --text-muted-light: #CCCCCC;
+            --text-muted-dark: #CCCCCC;
+            
+            --card-bg: #1E1E1E;
+            --card-border: #333333;
+        }
+
+        /* --- HIGH CONTRAST THEME --- */
+        html.high-contrast {
+            --bg-main: #000000;
+            --text-main: #FFFFFF;
+            --bg-alt: #000000;
+            --text-alt: #FFFFFF;
+            
+            --text-muted-light: #FFFFFF;
+            --text-muted-dark: #FFFFFF;
+            
+            --card-bg: #000000;
+            --card-border: #FFFFFF;
+            
+            --neon-lime: #FFFF00; /* Pure yellow */
+            --steel-blue: #00FFFF; /* Pure cyan */
+            --lavender: #FF00FF; /* Pure magenta */
+            --off-black: #000000;
+            --off-white: #FFFFFF;
+        }
+
+        /* --- INCREASE FONT SIZE --- */
+        html.large-text {
+            --base-font-size: 20px;
+        }
+
+        /* --- DYSLEXIA FONT --- */
+        html.dyslexia-font, html.dyslexia-font * {
+            font-family: "Comic Sans MS", "Comic Sans", "OpenDyslexic", sans-serif !important;
+            letter-spacing: 0.05em !important;
+            word-spacing: 0.1em !important;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        html {
+            scroll-padding-top: 100px;
+            scroll-behavior: smooth;
+            font-size: var(--base-font-size);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-light {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+        }
+
+        .section-dark {
+            background-color: var(--bg-alt);
+            color: var(--text-alt);
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1 {
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.04em;
+        }
+
+        h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.01em;
+        }
+
+        p {
+            font-size: 1.125rem;
+            font-weight: 400;
+        }
+
+        .text-lime { color: var(--neon-lime); }
+        .text-blue { color: var(--steel-blue); }
+        .text-lavender { color: var(--lavender); }
+
+        html.high-contrast .text-blue,
+        html.high-contrast .text-lavender {
+            text-decoration: underline;
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            font-weight: 900;
+            font-size: 1.05rem;
+            border-radius: 6px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .btn-lime {
+            background-color: var(--neon-lime);
+            color: #1A1A1A; 
+            border-color: var(--neon-lime);
+        }
+        .btn-lime:hover {
+            background-color: transparent;
+            color: var(--neon-lime);
+        }
+
+        .btn-blue {
+            background-color: var(--steel-blue);
+            color: #FFFFFF; 
+            border-color: var(--steel-blue);
+        }
+        .btn-blue:hover {
+            background-color: transparent;
+            color: var(--steel-blue);
+        }
+
+        html.high-contrast .btn {
+            border: 3px solid var(--text-main);
+        }
+
+        /* --- HEADER NAVIGATION --- */
+        header {
+            position: fixed; 
+            top: 0; left: 0; width: 100%;
+            padding: 2.5rem 0;
+            z-index: 1000;
+            color: #F4F4F4; 
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 0.75rem 0; 
+            background-color: var(--bg-alt); 
+            border-bottom: 1px solid var(--card-border);
+            color: var(--text-alt);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+        }
+
+        .brand-container { flex: 1; display: flex; }
+        .nav-filler { flex: 1; }
+
+        .logo-img {
+            height: 45px;
+            width: auto;
+            object-fit: contain;
+            transition: height 0.3s ease;
+        }
+        header .logo-img { filter: brightness(0) invert(1); }
+        header.scrolled .logo-img { height: 35px; }
+        
+        html.dark-mode footer .logo-img,
+        html.high-contrast footer .logo-img {
+            filter: brightness(0) invert(1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            flex: 2; 
+            justify-content: center; 
+            gap: 2.5rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links a:hover { color: var(--neon-lime); }
+
+        /* --- MOBILE HAMBURGER --- */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            z-index: 1001; 
+        }
+
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: currentColor;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        /* --- HERO SECTION WITH YOUR PNG --- */
+        .hero-collage {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background-color: #1A1A1A;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(26, 26, 26, 0.35);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: #F4F4F4;
+            max-width: 900px;
+            margin-top: 5vh;
+        }
+
+        .hero-content p {
+            color: #E0E0E0;
+            font-size: 1.35rem;
+            max-width: 650px;
+            margin: 1.5rem 0 2.5rem 0;
+        }
+
+        /* --- ABOUT & FOCUS --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text p {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p.sub-text {
+            font-size: 1.125rem;
+            color: var(--text-muted-light);
+        }
+
+        .focus-section { padding-top: 4rem; }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .card {
+            border-top: 4px solid var(--steel-blue);
+            padding-top: 1.5rem;
+        }
+
+        html.high-contrast .card {
+            border: 2px solid var(--text-main);
+            padding: 1.5rem;
+        }
+
+        /* --- TEAM SECTION --- */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .team-subtitle {
+            max-width: 600px;
+            color: var(--text-muted-dark);
+            font-weight: 700;
+        }
+
+        .team-member p {
+            color: var(--text-muted-dark);
+        }
+
+        .team-photo-placeholder {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #333333;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #AAAAAA;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+        
+        html.high-contrast .team-photo-placeholder {
+            border: 2px solid #FFFFFF;
+        }
+
+        /* --- RESOURCES SECTION --- */
+        .resource-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 2.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .resource-card:hover {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: var(--steel-blue);
+        }
+
+        .resource-card h3 { margin-bottom: 0.5rem; }
+        .resource-card p { margin-bottom: 2rem; font-size: 1rem; color: var(--text-muted-light); }
+
+        /* --- JOIN US --- */
+        .split-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .split-grid p {
+            color: var(--text-muted-dark);
+        }
+
+        .img-placeholder {
+            background-image: url('photo_a.jpg');
+            background-size: cover;
+            background-position: right center;
+            background-repeat: no-repeat;
+            background-color: #333333;
+            width: 100%;
+            height: 500px;
+            display: flex;
+            align-items: right;
+            justify-content: right;
+            color: #AAAAAA;
+            font-weight: 700;
+            font-size: 1rem;
+            border-radius: 8px;
+        }
+
+        /* --- CONTACT & FOOTER --- */
+        .contact-section {
+            text-align: center;
+            padding-bottom: 40px; 
+        }
+
+        .contact-link {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: var(--steel-blue);
+            text-decoration: underline;
+            text-decoration-thickness: 3px;
+            text-underline-offset: 8px;
+            transition: color 0.3s;
+        }
+
+        .contact-link:hover { color: var(--lavender); }
+
+        footer {
+            padding: 3rem 0 4rem 0;
+            text-align: center;
+            border-top: 1px solid var(--card-border);
+        }
+        
+        .footer-brand {
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        /* --- ACCESSIBILITY PANEL (A11Y) --- */
+        .a11y-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 10px;
+        }
+
+        .a11y-toggle-btn {
+            background-color: var(--steel-blue);
+            color: #FFFFFF;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        html.high-contrast .a11y-toggle-btn {
+            border: 2px solid #FFFFFF;
+            background-color: #000000;
+        }
+
+        .a11y-menu {
+            display: none;
+            flex-direction: column;
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+            overflow: hidden;
+            width: 220px;
+        }
+
+        .a11y-menu.show {
+            display: flex;
+        }
+
+        .a11y-option {
+            background: none;
+            border: none;
+            border-bottom: 1px solid var(--card-border);
+            padding: 15px;
+            text-align: left;
+            font-family: inherit;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .a11y-option:hover { background-color: rgba(128,128,128,0.1); }
+        .a11y-option:last-child { border-bottom: none; }
+        .a11y-option.active-state {
+            background-color: var(--steel-blue);
+            color: #FFFFFF;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger { display: flex; }
+            .nav-filler { display: none; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+                background-color: var(--bg-alt);
+                color: var(--text-alt);
+                flex-direction: column; justify-content: center; align-items: center;
+                transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+                gap: 3rem;
+            }
+            .nav-links.active { right: 0; }
+            .nav-links a { font-size: 1.5rem; }
+            .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+            .split-grid { grid-template-columns: 1fr; gap: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ACCESSIBILITY FLOATING WIDGET -->
+    <div class="a11y-widget">
+        <div class="a11y-menu" id="a11y-menu">
+            <button class="a11y-option" id="btn-text-size">Increase Font Size</button>
+            <button class="a11y-option" id="btn-dyslexia">Dyslexia Font</button>
+            <button class="a11y-option" id="btn-contrast">High Contrast</button>
+            <button class="a11y-option" id="btn-theme">Dark Mode Toggle</button>
+        </div>
+        <button class="a11y-toggle-btn" id="a11y-toggle">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <circle cx="12" cy="10" r="3"></circle>
+                <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"></path>
+            </svg>
+            Accessibility
+        </button>
+    </div>
+
+    <!-- HEADER -->
+    <header id="main-header">
+        <div class="container nav-container">
+            <div class="brand-container">
+                <a href="#" class="brand">
+                    <img src="logo.svg" alt="Until Tomorrow Logo" class="logo-img">
+                    until tomorrow
+                </a>
+            </div>
+            
+            <nav class="nav-links" id="nav-links">
+                <a href="#about" class="nav-item">ABOUT</a>
+                <a href="#team" class="nav-item">OUR TEAM</a>
+                <a href="#resources" class="nav-item">RESOURCES</a>
+                <a href="#join" class="nav-item">JOIN US</a>
+                <a href="#contact" class="nav-item">CONTACT</a>
+            </nav>
+
+            <div class="nav-filler"></div>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-collage">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <h1>Anticipate <br><span class="text-lime">the future</span></h1>
+            <p>We are a youth-led NGO building the next generation of leaders. Equipping young minds with skills for an AI-driven world, rooted in ethics and forward-thinking.</p>
+            <a href="#join" class="btn btn-lime">Join the movement</a>
+        </div>
+    </section>
+
+    <main>
+        <!-- ABOUT SECTION -->
+        <section id="about" class="section section-light">
+            <div class="container about-grid">
+                <div>
+                    <h2>Who we <span class="text-blue">are</span></h2>
+                </div>
+                <div class="about-text">
+                    <p>We are a collective of young thinkers, builders, and advocates. Born from the belief that the future shouldn't just happen to us—it should be shaped by us.</p>
+                    <p class="sub-text">Until Tomorrow operates at the intersection of technology, ethics, and leadership. As artificial intelligence and emerging tech rapidly change the global landscape, traditional education is struggling to keep up. We are stepping in to ensure youth have a seat at the table, equipped with the critical thinking and adaptive skills required to navigate and govern tomorrow's world.</p>
+                </div>
+            </div>
+            
+            <div class="container focus-section">
+                <h2>Our <span class="text-blue">focus</span></h2>
+                <div class="grid-3">
+                    <div class="card">
+                        <h3>Anticipatory leadership</h3>
+                        <p>We train young leaders not just to react to the present, but to map out and prepare for multiple future scenarios.</p>
+                    </div>
+                    <div class="card">
+                        <h3>AI ethics & tech</h3>
+                        <p>Technology is moving fast. We advocate for and educate on the ethical development, deployment, and regulation of AI.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Future skills</h3>
+                        <p>From critical thinking in a deep-fake era to systems design, we bridge the gap between traditional education and tomorrow's demands.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEAM SECTION -->
+        <section id="team" class="section section-dark">
+            <div class="container">
+                <h2>Meet the <span class="text-lavender">architects</span></h2>
+                <p class="team-subtitle">A global coalition of youth leaders, tech ethicists, and strategists building the frameworks for tomorrow.</p>
+                
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-photo-placeholder">[ Photo ]</div>
+                        <h3>Natasha Litherland</h3>
+                        <p>Founder & Director</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo-placeholder">[ Photo ]</div>
+                        <h3>Iqra Mumtaz</h3>
+                        <p>Role = ?</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo-placeholder">[ Photo ]</div>
+                        <h3>Name Here</h3>
+                        <p>Lead Strategist</p>
+                    </div>
+                    <div class="team-member">
+                        <div class="team-photo-placeholder">[ Photo ]</div>
+                        <h3>Name Here</h3>
+                        <p>Community Lead</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESOURCES SECTION -->
+        <section id="resources" class="section section-light">
+            <div class="container">
+                <h2>Our <span class="text-blue">resources</span></h2>
+                <p style="max-width: 700px; margin-bottom: 3rem;">Open-source frameworks, educational toolkits, and reading materials designed to empower the next generation of tech leaders.</p>
+                
+                <div class="grid-3">
+                    <div class="resource-card">
+                        <div>
+                            <h3>AI Ethics Toolkit</h3>
+                            <p>A comprehensive guide for students navigating the moral implications of artificial intelligence in education and creation.</p>
+                        </div>
+                        <a href="#" class="btn btn-blue" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Download PDF</a>
+                    </div>
+                    <div class="resource-card">
+                        <div>
+                            <h3>Anticipatory Framework</h3>
+                            <p>Exercises and workshop materials to help youth groups practice scenario-planning and future mapping.</p>
+                        </div>
+                        <a href="#" class="btn btn-blue" style="padding: 0.5rem 1rem; font-size: 0.9rem;">View Toolkit</a>
+                    </div>
+                    <div class="resource-card">
+                        <div>
+                            <h3>The 2025 Manifesto</h3>
+                            <p>Our foundational document detailing the youth perspective on the rapid acceleration of emerging technologies.</p>
+                        </div>
+                        <a href="#" class="btn btn-blue" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Read Online</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- JOIN US SECTION -->
+        <section id="join" class="section section-dark">
+            <div class="container split-grid">
+                <div class="img-placeholder" aria-label="Join us background image"></div>
+                <div>
+                    <h2>Built by youth <br>Built for <span class="text-lime">tomorrow</span></h2>
+                    <p style="margin-bottom: 2.5rem;">The decisions made about technology today will disproportionately affect young people. <strong>Until Tomorrow</strong> ensures that youth are not just subjects of the future, but active architects of it. Join our community, start a chapter, or partner with us.</p>
+                    <a href="#contact" class="btn btn-lime">Get Involved</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section id="contact" class="section section-light contact-section">
+            <div class="container">
+                <h2>Let's build <span class="text-blue">together</span></h2>
+                <p style="margin-bottom: 2rem;">Have questions, want to partner, or looking to start a chapter?</p>
+                <a href="mailto:hello@untiltomorrow.org" class="contact-link">hello@untiltomorrow.org</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="section-light">
+        <div class="container">
+            <a href="#" class="brand footer-brand">
+                <img src="logo.svg" alt="Until Tomorrow Logo" class="logo-img">
+                until tomorrow
+            </a>
+            <p style="color: var(--text-muted-light); font-size: 0.95rem; margin-top: 1rem;">&copy; 2026 Until Tomorrow. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT -->
+    <script>
+        // --- HEADER LOGIC ---
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        // --- MOBILE MENU LOGIC ---
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            if(navLinks.classList.contains('active')) header.classList.add('scrolled');
+            else if (window.scrollY <= 50) header.classList.remove('scrolled');
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // --- ACCESSIBILITY LOGIC ---
+        const html = document.documentElement;
+        const a11yToggle = document.getElementById('a11y-toggle');
+        const a11yMenu = document.getElementById('a11y-menu');
+        
+        const btnTextSize = document.getElementById('btn-text-size');
+        const btnDyslexia = document.getElementById('btn-dyslexia');
+        const btnContrast = document.getElementById('btn-contrast');
+        const btnTheme = document.getElementById('btn-theme');
+
+        a11yToggle.addEventListener('click', () => {
+            a11yMenu.classList.toggle('show');
+        });
+
+        btnTextSize.addEventListener('click', () => {
+            html.classList.toggle('large-text');
+            btnTextSize.classList.toggle('active-state');
+        });
+
+        btnDyslexia.addEventListener('click', () => {
+            html.classList.toggle('dyslexia-font');
+            btnDyslexia.classList.toggle('active-state');
+        });
+
+        btnContrast.addEventListener('click', () => {
+            html.classList.toggle('high-contrast');
+            btnContrast.classList.toggle('active-state');
+            if(html.classList.contains('high-contrast')) {
+                html.classList.remove('dark-mode');
+                btnTheme.classList.remove('active-state');
+            }
+        });
+
+        btnTheme.addEventListener('click', () => {
+            html.classList.toggle('dark-mode');
+            btnTheme.classList.toggle('active-state');
+            if(html.classList.contains('dark-mode')) {
+                html.classList.remove('high-contrast');
+                btnContrast.classList.remove('active-state');
+            }
+        });
+    </script>
+</body>
+</html>
