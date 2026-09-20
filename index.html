@@ -261,11 +261,15 @@
             display: flex;
             flex: 2; 
             justify-content: center; 
-            gap: 2.5rem;
+            gap: 1.6rem;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+        }
+
+        .nav-links a {
+            white-space: nowrap;
         }
 
         .nav-links a:hover { color: var(--neon-lime); }
@@ -365,7 +369,7 @@
         }
 
         .team-subtitle {
-            max-width: 600px;
+            max-width: none;
             color: var(--text-muted-dark);
             font-weight: 700;
         }
@@ -391,6 +395,107 @@
         
         html.high-contrast .team-photo-placeholder {
             border: 2px solid #FFFFFF;
+        }
+
+        .team-photo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* --- FELLOWSHIP SECTION --- */
+        .fellowship-section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        .fellowship-banner {
+            width: 100%;
+            aspect-ratio: 4 / 1;
+            min-height: 220px;
+            background-color: #333333;
+            border-radius: 8px;
+            margin: 2rem 0 3rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #AAAAAA;
+            font-size: 0.9rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            overflow: hidden;
+            display: block;
+            object-fit: cover;
+        }
+
+        .fellowship-copy {
+            width: 100%;
+        }
+
+        .fellowship-copy p {
+            max-width: none;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted-dark);
+            font-size: 1.125rem;
+        }
+
+        .fellowship-intro {
+            font-size: 1.125rem;
+        }
+
+        .fellowship-details {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem 3rem;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .fellowship-detail {
+            border-top: 2px solid var(--lavender);
+            padding-top: 1rem;
+        }
+
+        .fellowship-detail strong {
+            display: block;
+            margin-bottom: 0.35rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .fellowship-detail span {
+            color: var(--text-muted-dark);
+        }
+
+        .fellowship-partners {
+            margin-top: 2rem;
+            font-size: 0.95rem;
+            color: var(--text-muted-dark);
+        }
+
+        .fellowship-deadline {
+            margin-top: 2.5rem;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+        }
+
+        .team-contact-btn {
+            margin-top: 1.25rem;
+        }
+
+        .resource-coming-soon {
+            cursor: default;
+            pointer-events: none;
+            opacity: 0.75;
+        }
+
+        html.high-contrast .fellowship-banner {
+            border: 2px solid var(--text-main);
+            background-color: #000000;
+            color: #FFFFFF;
         }
 
         /* --- RESOURCES SECTION --- */
@@ -564,6 +669,7 @@
             .hamburger.active span:nth-child(2) { opacity: 0; }
             .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
             .split-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .fellowship-details { grid-template-columns: 1fr; gap: 1.25rem; }
         }
     </style>
 </head>
@@ -600,6 +706,7 @@
             <nav class="nav-links" id="nav-links">
                 <a href="#about" class="nav-item">ABOUT</a>
                 <a href="#team" class="nav-item">OUR TEAM</a>
+                <a href="#fellowship" class="nav-item">CHILD SAFETY &amp; AI FELLOWSHIP</a>
                 <a href="#resources" class="nav-item">RESOURCES</a>
                 <a href="#join" class="nav-item">JOIN US</a>
                 <a href="#contact" class="nav-item">CONTACT</a>
@@ -621,7 +728,7 @@
         <div class="container hero-content">
             <h1>Anticipate <br><span class="text-lime">the future</span></h1>
             <p>We are a youth-led NGO building the next generation of leaders. Equipping young minds with skills for an AI-driven world, rooted in ethics and forward-thinking.</p>
-            <a href="#join" class="btn btn-lime">Join the movement</a>
+            <a href="#fellowship" class="btn btn-lime">Join the movement</a>
         </div>
     </section>
 
@@ -633,7 +740,7 @@
                     <h2>Who we <span class="text-blue">are</span></h2>
                 </div>
                 <div class="about-text">
-                    <p>We are a collective of young thinkers, builders, and advocates. Born from the belief that the future shouldn't just happen to us—it should be shaped by us.</p>
+                    <p>We are a small team of young thinkers, builders, and advocates, driven by the belief that we should have a role in shaping the future.</p>
                     <p class="sub-text">Until Tomorrow operates at the intersection of technology, ethics, and leadership. As artificial intelligence and emerging tech rapidly change the global landscape, traditional education is struggling to keep up. We are stepping in to ensure youth have a seat at the table, equipped with the critical thinking and adaptive skills required to navigate and govern tomorrow's world.</p>
                 </div>
             </div>
@@ -665,26 +772,64 @@
                 
                 <div class="team-grid">
                     <div class="team-member">
-                        <div class="team-photo-placeholder">[ Photo ]</div>
+                        <div class="team-photo-placeholder"><img src="natasha.jpeg" alt="Natasha Litherland"></div>
                         <h3>Natasha Litherland</h3>
                         <p>Founder & Director</p>
                     </div>
                     <div class="team-member">
-                        <div class="team-photo-placeholder">[ Photo ]</div>
+                        <div class="team-photo-placeholder"><img src="iqra.jpeg" alt="Iqra Mumtaz"></div>
                         <h3>Iqra Mumtaz</h3>
-                        <p>Role = ?</p>
+                        <p>Deputy Director</p>
                     </div>
                     <div class="team-member">
-                        <div class="team-photo-placeholder">[ Photo ]</div>
-                        <h3>Name Here</h3>
-                        <p>Lead Strategist</p>
-                    </div>
-                    <div class="team-member">
-                        <div class="team-photo-placeholder">[ Photo ]</div>
-                        <h3>Name Here</h3>
-                        <p>Community Lead</p>
+                        <div class="team-photo-placeholder">?</div>
+                        <h3>This could be you!</h3>
+                        <a href="https://forms.gle/MR19qakm6j8GHUyHA" class="btn btn-lime team-contact-btn" target="_blank" rel="noopener noreferrer">Contact</a>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- CHILD SAFETY & AI FELLOWSHIP SECTION -->
+        <section id="fellowship" class="section section-dark fellowship-section">
+            <div class="container">
+                <div class="fellowship-copy">
+                    <h2>Child Safety <span class="text-lime">&amp; AI Fellowship</span></h2>
+                    <p class="fellowship-intro">Young people are entering a world being reshaped by artificial intelligence, demographic change, climate pressures, and automation. Yet they are often positioned as recipients of these changes rather than as people who can actively shape what comes next.</p>
+                    <p>The Child Safety &amp; AI Fellowship introduces participants to <strong>anticipatory leadership and futures thinking</strong> as practical tools for engaging with complex and uncertain futures, through their application to the specific topic of <strong>AI and Child Safety</strong>.</p>
+                </div>
+
+                <div class="fellowship-details">
+                    <div class="fellowship-detail">
+                        <strong>Eligibility</strong>
+                        <span>Ages 18–30, from anywhere in the world.</span>
+                    </div>
+                    <div class="fellowship-detail">
+                        <strong>Cohort</strong>
+                        <span>7–9 participants for deep, discussion-based learning.</span>
+                    </div>
+                    <div class="fellowship-detail">
+                        <strong>Schedule</strong>
+                        <span>Seven weekly 1.5-hour sessions starting Saturday, October 3, 2026. Tentatively lunchtime CEST, optimised for the final group’s time zones.</span>
+                    </div>
+                    <div class="fellowship-detail">
+                        <strong>Format</strong>
+                        <span>Highly interactive rather than lecture-based, with activities such as story circles and short readings or videos before each session.</span>
+                    </div>
+                    <div class="fellowship-detail">
+                        <strong>The work</strong>
+                        <span>Identify trends, map systems, build future scenarios, and design concrete actions. The programme culminates in a collaborative model-UN-style activity during the final session.</span>
+                    </div>
+                    <div class="fellowship-detail">
+                        <strong>Partners</strong>
+                        <span>Organised in partnership with ASEF, drawing on methodology from the Copenhagen Institute for Futures Studies and the Development Academy of the Philippines.</span>
+                    </div>
+                </div>
+
+                <img src="fellowship_banner.png" alt="Child Safety & AI Fellowship" class="fellowship-banner">
+
+                <p class="fellowship-deadline">Applications close October 1, 2026 at 23:59. Late applications will not be processed.</p>
+                <a href="https://forms.gle/rEDP8PJAG5smtjFY7" class="btn btn-lime" target="_blank" rel="noopener noreferrer">Apply for the fellowship</a>
             </div>
         </section>
 
@@ -700,21 +845,21 @@
                             <h3>AI Ethics Toolkit</h3>
                             <p>A comprehensive guide for students navigating the moral implications of artificial intelligence in education and creation.</p>
                         </div>
-                        <a href="#" class="btn btn-blue" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Download PDF</a>
+                        <span class="btn btn-blue resource-coming-soon" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Coming soon</span>
                     </div>
                     <div class="resource-card">
                         <div>
                             <h3>Anticipatory Framework</h3>
                             <p>Exercises and workshop materials to help youth groups practice scenario-planning and future mapping.</p>
                         </div>
-                        <a href="#" class="btn btn-blue" style="padding: 0.5rem 1rem; font-size: 0.9rem;">View Toolkit</a>
+                        <span class="btn btn-blue resource-coming-soon" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Coming soon</span>
                     </div>
                     <div class="resource-card">
                         <div>
                             <h3>The 2025 Manifesto</h3>
                             <p>Our foundational document detailing the youth perspective on the rapid acceleration of emerging technologies.</p>
                         </div>
-                        <a href="#" class="btn btn-blue" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Read Online</a>
+                        <span class="btn btn-blue resource-coming-soon" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Coming soon</span>
                     </div>
                 </div>
             </div>
@@ -736,8 +881,8 @@
         <section id="contact" class="section section-light contact-section">
             <div class="container">
                 <h2>Let's build <span class="text-blue">together</span></h2>
-                <p style="margin-bottom: 2rem;">Have questions, want to partner, or looking to start a chapter?</p>
-                <a href="mailto:hello@untiltomorrow.org" class="contact-link">hello@untiltomorrow.org</a>
+                <p style="margin-bottom: 2rem;">Have questions, want to partner, or looking to get involved?</p>
+                <a href="https://forms.gle/MR19qakm6j8GHUyHA" class="contact-link" target="_blank" rel="noopener noreferrer">Contact us</a>
             </div>
         </section>
     </main>
