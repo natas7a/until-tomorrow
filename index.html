@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>until tomorrow | youth-led ngo</title>
-    
+
     <!-- Import Inter Font for default use -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    
+
     <style>
         /* --- CSS VARIABLES & THEMES --- */
         :root {
@@ -17,18 +17,18 @@
             --off-white: #F4F4F4;
             --off-black: #1A1A1A;
             --neon-lime: #d0ed0e;
-            --steel-blue: #2e6561;
-            --lavender: #928fb5;
+            --steel-blue: #a41111;
+            --lavender: #4738eb;
 
             /* Default Theme Variables */
             --bg-main: var(--off-white);
             --text-main: var(--off-black);
             --bg-alt: var(--off-black);
             --text-alt: var(--off-white);
-            
+
             --text-muted-light: #333333;
             --text-muted-dark: #E0E0E0;
-            
+
             --card-bg: #FFFFFF;
             --card-border: #E0E0E0;
 
@@ -42,10 +42,10 @@
             --text-main: #F4F4F4;
             --bg-alt: #0A0A0A;
             --text-alt: #F4F4F4;
-            
+
             --text-muted-light: #CCCCCC;
             --text-muted-dark: #CCCCCC;
-            
+
             --card-bg: #1E1E1E;
             --card-border: #333333;
         }
@@ -56,13 +56,13 @@
             --text-main: #FFFFFF;
             --bg-alt: #000000;
             --text-alt: #FFFFFF;
-            
+
             --text-muted-light: #FFFFFF;
             --text-muted-dark: #FFFFFF;
-            
+
             --card-bg: #000000;
             --card-border: #FFFFFF;
-            
+
             --neon-lime: #FFFF00; /* Pure yellow */
             --steel-blue: #00FFFF; /* Pure cyan */
             --lavender: #FF00FF; /* Pure magenta */
@@ -185,7 +185,7 @@
 
         .btn-lime {
             background-color: var(--neon-lime);
-            color: #1A1A1A; 
+            color: #1A1A1A;
             border-color: var(--neon-lime);
         }
         .btn-lime:hover {
@@ -195,12 +195,33 @@
 
         .btn-blue {
             background-color: var(--steel-blue);
-            color: #FFFFFF; 
+            color: #FFFFFF;
             border-color: var(--steel-blue);
         }
         .btn-blue:hover {
             background-color: transparent;
             color: var(--steel-blue);
+        }
+
+        .btn-small {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-alt);
+            border-color: var(--text-alt);
+        }
+        .btn-outline:hover {
+            border-color: var(--neon-lime);
+            color: var(--neon-lime);
+        }
+
+        .btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         html.high-contrast .btn {
@@ -209,17 +230,17 @@
 
         /* --- HEADER NAVIGATION --- */
         header {
-            position: fixed; 
+            position: fixed;
             top: 0; left: 0; width: 100%;
             padding: 2.5rem 0;
             z-index: 1000;
-            color: #F4F4F4; 
+            color: #F4F4F4;
             transition: all 0.3s ease;
         }
 
         header.scrolled {
-            padding: 0.75rem 0; 
-            background-color: var(--bg-alt); 
+            padding: 0.75rem 0;
+            background-color: var(--bg-alt);
             border-bottom: 1px solid var(--card-border);
             color: var(--text-alt);
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -245,7 +266,7 @@
         }
         header .logo-img { filter: brightness(0) invert(1); }
         header.scrolled .logo-img { height: 35px; }
-        
+
         html.dark-mode footer .logo-img,
         html.high-contrast footer .logo-img {
             filter: brightness(0) invert(1);
@@ -259,8 +280,8 @@
 
         .nav-links {
             display: flex;
-            flex: 2; 
-            justify-content: center; 
+            flex: 2;
+            justify-content: center;
             gap: 1.6rem;
             font-weight: 700;
             font-size: 0.82rem;
@@ -280,7 +301,11 @@
             flex-direction: column;
             gap: 6px;
             cursor: pointer;
-            z-index: 1001; 
+            z-index: 1001;
+            background: none;
+            border: none;
+            color: inherit;
+            padding: 0;
         }
 
         .hamburger span {
@@ -392,7 +417,7 @@
             font-weight: 700;
             letter-spacing: 0.05em;
         }
-        
+
         html.high-contrast .team-photo-placeholder {
             border: 2px solid #FFFFFF;
         }
@@ -409,26 +434,18 @@
         .fellowship-section {
             padding-top: 5rem;
             padding-bottom: 5rem;
+            border-top: 1px solid #333333;
         }
 
         .fellowship-banner {
+            display: block;
             width: 100%;
+            height: auto;
             aspect-ratio: 4 / 1;
-            min-height: 220px;
+            object-fit: cover;
             background-color: #333333;
             border-radius: 8px;
             margin: 2rem 0 3rem 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #AAAAAA;
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            overflow: hidden;
-            display: block;
-            object-fit: cover;
         }
 
         .fellowship-copy {
@@ -439,10 +456,6 @@
             max-width: none;
             margin-bottom: 1.5rem;
             color: var(--text-muted-dark);
-            font-size: 1.125rem;
-        }
-
-        .fellowship-intro {
             font-size: 1.125rem;
         }
 
@@ -470,16 +483,40 @@
             color: var(--text-muted-dark);
         }
 
-        .fellowship-partners {
-            margin-top: 2rem;
-            font-size: 0.95rem;
-            color: var(--text-muted-dark);
-        }
-
         .fellowship-deadline {
             margin-top: 2.5rem;
             margin-bottom: 2.5rem;
             font-weight: 700;
+        }
+
+        .fellowship-guide {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem 3rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            padding: 1.75rem 2rem;
+            border: 1px solid #333333;
+            border-left: 6px solid var(--neon-lime);
+            border-radius: 8px;
+        }
+
+        .fellowship-guide strong {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 900;
+            margin-bottom: 0.25rem;
+        }
+
+        .fellowship-guide p {
+            color: var(--text-muted-dark);
+            font-size: 1rem;
+            max-width: 640px;
+        }
+
+        html.high-contrast .fellowship-guide {
+            border: 2px solid var(--text-alt);
         }
 
         .team-contact-btn {
@@ -519,6 +556,25 @@
         .resource-card h3 { margin-bottom: 0.5rem; }
         .resource-card p { margin-bottom: 2rem; font-size: 1rem; color: var(--text-muted-light); }
 
+        .resource-card-featured {
+            border-top: 4px solid var(--neon-lime);
+        }
+
+        .resource-label {
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-size: 0.75rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--steel-blue);
+        }
+
+        .section-intro {
+            max-width: 700px;
+            margin-bottom: 3rem;
+        }
+
         /* --- JOIN US --- */
         .split-grid {
             display: grid;
@@ -529,6 +585,7 @@
 
         .split-grid p {
             color: var(--text-muted-dark);
+            margin-bottom: 2.5rem;
         }
 
         .img-placeholder {
@@ -539,19 +596,17 @@
             background-color: #333333;
             width: 100%;
             height: 500px;
-            display: flex;
-            align-items: right;
-            justify-content: right;
-            color: #AAAAAA;
-            font-weight: 700;
-            font-size: 1rem;
             border-radius: 8px;
         }
 
         /* --- CONTACT & FOOTER --- */
         .contact-section {
             text-align: center;
-            padding-bottom: 40px; 
+            padding-bottom: 2.5rem;
+        }
+
+        .contact-section p {
+            margin-bottom: 2rem;
         }
 
         .contact-link {
@@ -571,10 +626,30 @@
             text-align: center;
             border-top: 1px solid var(--card-border);
         }
-        
+
         .footer-brand {
             justify-content: center;
             margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.5rem;
+            margin-top: 1rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-links a:hover { color: var(--steel-blue); }
+
+        .footer-copy {
+            color: var(--text-muted-light);
+            font-size: 0.95rem;
+            margin-top: 1rem;
         }
 
         /* --- ACCESSIBILITY PANEL (A11Y) --- */
@@ -605,7 +680,7 @@
             align-items: center;
             gap: 8px;
         }
-        
+
         html.high-contrast .a11y-toggle-btn {
             border: 2px solid #FFFFFF;
             background-color: #000000;
@@ -661,19 +736,21 @@
                 color: var(--text-alt);
                 flex-direction: column; justify-content: center; align-items: center;
                 transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-                gap: 3rem;
+                gap: 2.25rem;
             }
             .nav-links.active { right: 0; }
-            .nav-links a { font-size: 1.5rem; }
+            .nav-links a { font-size: 1.25rem; white-space: normal; text-align: center; padding: 0 1rem; }
             .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
             .hamburger.active span:nth-child(2) { opacity: 0; }
             .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
             .split-grid { grid-template-columns: 1fr; gap: 3rem; }
             .fellowship-details { grid-template-columns: 1fr; gap: 1.25rem; }
+            .fellowship-guide { padding: 1.5rem; }
+            .img-placeholder { height: 320px; }
         }
     </style>
 </head>
-<body>
+<body id="top">
 
     <!-- ACCESSIBILITY FLOATING WIDGET -->
     <div class="a11y-widget">
@@ -683,8 +760,8 @@
             <button class="a11y-option" id="btn-contrast">High Contrast</button>
             <button class="a11y-option" id="btn-theme">Dark Mode Toggle</button>
         </div>
-        <button class="a11y-toggle-btn" id="a11y-toggle">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <button class="a11y-toggle-btn" id="a11y-toggle" aria-expanded="false" aria-controls="a11y-menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="10"></circle>
                 <circle cx="12" cy="10" r="3"></circle>
                 <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"></path>
@@ -697,12 +774,12 @@
     <header id="main-header">
         <div class="container nav-container">
             <div class="brand-container">
-                <a href="#" class="brand">
+                <a href="#top" class="brand">
                     <img src="logo.svg" alt="Until Tomorrow Logo" class="logo-img">
                     until tomorrow
                 </a>
             </div>
-            
+
             <nav class="nav-links" id="nav-links">
                 <a href="#about" class="nav-item">ABOUT</a>
                 <a href="#team" class="nav-item">OUR TEAM</a>
@@ -714,11 +791,11 @@
 
             <div class="nav-filler"></div>
 
-            <div class="hamburger" id="hamburger">
+            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
     </header>
 
@@ -744,7 +821,7 @@
                     <p class="sub-text">Until Tomorrow operates at the intersection of technology, ethics, and leadership. As artificial intelligence and emerging tech rapidly change the global landscape, traditional education is struggling to keep up. We are stepping in to ensure youth have a seat at the table, equipped with the critical thinking and adaptive skills required to navigate and govern tomorrow's world.</p>
                 </div>
             </div>
-            
+
             <div class="container focus-section">
                 <h2>Our <span class="text-blue">focus</span></h2>
                 <div class="grid-3">
@@ -753,7 +830,7 @@
                         <p>We train young leaders not just to react to the present, but to map out and prepare for multiple future scenarios.</p>
                     </div>
                     <div class="card">
-                        <h3>AI ethics & tech</h3>
+                        <h3>AI ethics &amp; tech</h3>
                         <p>Technology is moving fast. We advocate for and educate on the ethical development, deployment, and regulation of AI.</p>
                     </div>
                     <div class="card">
@@ -769,12 +846,12 @@
             <div class="container">
                 <h2>Meet the <span class="text-lavender">architects</span></h2>
                 <p class="team-subtitle">A global coalition of youth leaders, tech ethicists, and strategists building the frameworks for tomorrow.</p>
-                
+
                 <div class="team-grid">
                     <div class="team-member">
                         <div class="team-photo-placeholder"><img src="natasha.jpeg" alt="Natasha Litherland"></div>
                         <h3>Natasha Litherland</h3>
-                        <p>Founder & Director</p>
+                        <p>Founder &amp; Director</p>
                     </div>
                     <div class="team-member">
                         <div class="team-photo-placeholder"><img src="iqra.jpeg" alt="Iqra Mumtaz"></div>
@@ -826,10 +903,18 @@
                     </div>
                 </div>
 
-                <img src="fellowship_banner.png" alt="Child Safety & AI Fellowship" class="fellowship-banner">
+                <img src="fellowship_banner.png" alt="Child Safety &amp; AI Fellowship: Futures Thinking in Practice" class="fellowship-banner">
 
                 <p class="fellowship-deadline">Applications close October 1, 2026 at 23:59. Late applications will not be processed.</p>
                 <a href="https://forms.gle/rEDP8PJAG5smtjFY7" class="btn btn-lime" target="_blank" rel="noopener noreferrer">Apply for the fellowship</a>
+
+                <div class="fellowship-guide">
+                    <div>
+                        <strong>New to foresight?</strong>
+                        <p>Our foresight guide explains every step of the fellowship's method, from framing to backcasting, with examples drawn from AI and child safety.</p>
+                    </div>
+                    <a href="foresight-guide.html" class="btn btn-outline">Read the foresight guide</a>
+                </div>
             </div>
         </section>
 
@@ -837,29 +922,30 @@
         <section id="resources" class="section section-light">
             <div class="container">
                 <h2>Our <span class="text-blue">resources</span></h2>
-                <p style="max-width: 700px; margin-bottom: 3rem;">Open-source frameworks, educational toolkits, and reading materials designed to empower the next generation of tech leaders.</p>
-                
+                <p class="section-intro">Open-source frameworks, educational toolkits, and reading materials designed to empower the next generation of tech leaders.</p>
+
                 <div class="grid-3">
                     <div class="resource-card">
                         <div>
                             <h3>AI Ethics Toolkit</h3>
                             <p>A comprehensive guide for students navigating the moral implications of artificial intelligence in education and creation.</p>
                         </div>
-                        <span class="btn btn-blue resource-coming-soon" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Coming soon</span>
+                        <span class="btn btn-blue btn-small resource-coming-soon">Coming soon</span>
                     </div>
-                    <div class="resource-card">
+                    <div class="resource-card resource-card-featured">
                         <div>
-                            <h3>Anticipatory Framework</h3>
-                            <p>Exercises and workshop materials to help youth groups practice scenario-planning and future mapping.</p>
+                            <span class="resource-label">Available now</span>
+                            <h3>Foresight Guide</h3>
+                            <p>A step-by-step guide to the anticipatory leadership method: framing, scanning, sensemaking, scenarios, backcasting and human-centred futures, with worked examples from AI and child safety.</p>
                         </div>
-                        <span class="btn btn-blue resource-coming-soon" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Coming soon</span>
+                        <a href="foresight-guide.html" class="btn btn-blue btn-small">Read the guide</a>
                     </div>
                     <div class="resource-card">
                         <div>
                             <h3>The 2025 Manifesto</h3>
                             <p>Our foundational document detailing the youth perspective on the rapid acceleration of emerging technologies.</p>
                         </div>
-                        <span class="btn btn-blue resource-coming-soon" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Coming soon</span>
+                        <span class="btn btn-blue btn-small resource-coming-soon">Coming soon</span>
                     </div>
                 </div>
             </div>
@@ -868,10 +954,10 @@
         <!-- JOIN US SECTION -->
         <section id="join" class="section section-dark">
             <div class="container split-grid">
-                <div class="img-placeholder" aria-label="Join us background image"></div>
+                <div class="img-placeholder" role="img" aria-label="Young leaders listening during a session at the ASEF Young Leaders Summit"></div>
                 <div>
                     <h2>Built by youth <br>Built for <span class="text-lime">tomorrow</span></h2>
-                    <p style="margin-bottom: 2.5rem;">The decisions made about technology today will disproportionately affect young people. <strong>Until Tomorrow</strong> ensures that youth are not just subjects of the future, but active architects of it. Join our community, start a chapter, or partner with us.</p>
+                    <p>The decisions made about technology today will disproportionately affect young people. <strong>Until Tomorrow</strong> ensures that youth are not just subjects of the future, but active architects of it. Join our community, start a chapter, or partner with us.</p>
                     <a href="#contact" class="btn btn-lime">Get Involved</a>
                 </div>
             </div>
@@ -881,7 +967,7 @@
         <section id="contact" class="section section-light contact-section">
             <div class="container">
                 <h2>Let's build <span class="text-blue">together</span></h2>
-                <p style="margin-bottom: 2rem;">Have questions, want to partner, or looking to get involved?</p>
+                <p>Have questions, want to partner, or looking to get involved?</p>
                 <a href="https://forms.gle/MR19qakm6j8GHUyHA" class="contact-link" target="_blank" rel="noopener noreferrer">Contact us</a>
             </div>
         </section>
@@ -890,11 +976,17 @@
     <!-- FOOTER -->
     <footer class="section-light">
         <div class="container">
-            <a href="#" class="brand footer-brand">
+            <a href="#top" class="brand footer-brand">
                 <img src="logo.svg" alt="Until Tomorrow Logo" class="logo-img">
                 until tomorrow
             </a>
-            <p style="color: var(--text-muted-light); font-size: 0.95rem; margin-top: 1rem;">&copy; 2026 Until Tomorrow. All rights reserved.</p>
+            <nav class="footer-links" aria-label="Footer">
+                <a href="#fellowship">Fellowship</a>
+                <a href="foresight-guide.html">Foresight guide</a>
+                <a href="#resources">Resources</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <p class="footer-copy">&copy; 2026 Until Tomorrow. All rights reserved.</p>
         </div>
     </footer>
 
@@ -915,7 +1007,9 @@
         hamburger.addEventListener('click', () => {
             hamburger.classList.toggle('active');
             navLinks.classList.toggle('active');
-            if(navLinks.classList.contains('active')) header.classList.add('scrolled');
+            const isOpen = navLinks.classList.contains('active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            if (isOpen) header.classList.add('scrolled');
             else if (window.scrollY <= 50) header.classList.remove('scrolled');
         });
 
@@ -923,6 +1017,7 @@
             item.addEventListener('click', () => {
                 hamburger.classList.remove('active');
                 navLinks.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', false);
             });
         });
 
@@ -930,7 +1025,7 @@
         const html = document.documentElement;
         const a11yToggle = document.getElementById('a11y-toggle');
         const a11yMenu = document.getElementById('a11y-menu');
-        
+
         const btnTextSize = document.getElementById('btn-text-size');
         const btnDyslexia = document.getElementById('btn-dyslexia');
         const btnContrast = document.getElementById('btn-contrast');
@@ -938,6 +1033,7 @@
 
         a11yToggle.addEventListener('click', () => {
             a11yMenu.classList.toggle('show');
+            a11yToggle.setAttribute('aria-expanded', a11yMenu.classList.contains('show'));
         });
 
         btnTextSize.addEventListener('click', () => {
@@ -953,7 +1049,7 @@
         btnContrast.addEventListener('click', () => {
             html.classList.toggle('high-contrast');
             btnContrast.classList.toggle('active-state');
-            if(html.classList.contains('high-contrast')) {
+            if (html.classList.contains('high-contrast')) {
                 html.classList.remove('dark-mode');
                 btnTheme.classList.remove('active-state');
             }
@@ -962,7 +1058,7 @@
         btnTheme.addEventListener('click', () => {
             html.classList.toggle('dark-mode');
             btnTheme.classList.toggle('active-state');
-            if(html.classList.contains('dark-mode')) {
+            if (html.classList.contains('dark-mode')) {
                 html.classList.remove('high-contrast');
                 btnContrast.classList.remove('active-state');
             }
