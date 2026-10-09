@@ -4,6 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>until tomorrow | youth-led ngo</title>
+    <meta name="description" content="Until Tomorrow is a youth-led NGO. Our Child Safety &amp; AI Fellowship runs from 10 October to 14 November 2026 in three cohorts, including a Peace &amp; Policy cohort.">
+
+    <!-- Apply saved display settings before the page paints (shared by every page) -->
+    <script>
+        (function () {
+            var d = document.documentElement;
+            d.classList.add('js');
+            try {
+                var s = JSON.parse(localStorage.getItem('ut-a11y-v1') || '{}') || {};
+                Object.keys(s).forEach(function (k) { if (s[k]) d.classList.add(k); });
+            } catch (e) { /* storage unavailable: defaults apply */ }
+        })();
+    </script>
 
     <!-- Import Inter Font for default use -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +31,7 @@
             --off-black: #1A1A1A;
             --neon-lime: #d0ed0e;
             --steel-blue: #a41111;
-            --lavender: #4738eb;
+            --lavender: var(--steel-blue);
 
             /* Default Theme Variables */
             --bg-main: var(--off-white);
@@ -570,6 +583,8 @@
             color: var(--steel-blue);
         }
 
+        .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
         .section-intro {
             max-width: 700px;
             margin-bottom: 3rem;
@@ -748,25 +763,189 @@
             .fellowship-guide { padding: 1.5rem; }
             .img-placeholder { height: 320px; }
         }
+
+        /* --- COHORTS, FACILITATORS, SCHEDULE --- */
+        .fellowship-sub { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900; letter-spacing: -0.02em; margin: 4rem 0 0.75rem; }
+        .fellowship-sub-intro { color: var(--text-muted-dark); max-width: 820px; margin-bottom: 2rem; }
+        .cohort-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .cohort-card { display: flex; flex-direction: column; gap: 1rem; padding: 1.75rem; border: 1px solid #333333; border-top: 4px solid var(--lavender); border-radius: 8px; background: rgba(255,255,255,0.03); }
+        .cohort-card.peace { border-top-color: var(--neon-lime); }
+        .cohort-tag { align-self: flex-start; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; padding: 0.2rem 0.6rem; border-radius: 4px; background: var(--lavender); color: #FFFFFF; }
+        .cohort-card.peace .cohort-tag { background: var(--neon-lime); color: #1A1A1A; }
+        .cohort-card h4 { font-size: 1.5rem; font-weight: 900; letter-spacing: -0.01em; }
+        .cohort-card > p { color: var(--text-muted-dark); font-size: 1rem; }
+        .cohort-facts { display: grid; gap: 0.75rem; margin: 0; }
+        .cohort-facts div { border-top: 1px solid #333333; padding-top: 0.6rem; }
+        .cohort-facts dt { font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted-dark); }
+        .cohort-facts dd { font-size: 1.05rem; font-weight: 700; margin: 0; }
+        .cohort-facts dd small { display: block; font-weight: 400; font-size: 0.92rem; color: var(--text-muted-dark); }
+        .local-time { display: block; margin-top: 0.3rem; font-weight: 400; font-size: 0.92rem; color: var(--neon-lime); }
+        .cohort-card .btn { margin-top: auto; align-self: flex-start; }
+        html.high-contrast .cohort-card { border: 2px solid #FFFFFF; }
+
+        .schedule-table { width: 100%; border-collapse: collapse; }
+        .schedule-table caption { text-align: left; color: var(--text-muted-dark); margin-bottom: 1rem; }
+        .schedule-table th, .schedule-table td { text-align: left; vertical-align: top; padding: 1rem 1.25rem 1rem 0; border-top: 1px solid #333333; }
+        .schedule-table thead th { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted-dark); border-top: 0; padding-top: 0; }
+        .schedule-table tbody th { font-weight: 900; white-space: nowrap; }
+        .schedule-table td { color: var(--text-muted-dark); }
+        .schedule-table td strong { color: var(--text-alt); }
+        .schedule-table a { text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--neon-lime); }
+        @media (max-width: 700px) {
+            .schedule-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+            .schedule-table, .schedule-table tbody, .schedule-table tr, .schedule-table th, .schedule-table td { display: block; width: 100%; }
+            .schedule-table caption { display: block; width: 100%; }
+            .schedule-table tr { border-top: 1px solid #333333; padding: 1rem 0; }
+            .schedule-table th, .schedule-table td { border: 0; padding: 0.15rem 0; }
+            .schedule-table td::before { content: attr(data-label) ": "; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+        }
+
+        .facilitator-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem 2rem; margin-top: 1.5rem; }
+        .facilitator-list li { border-top: 2px solid var(--lavender); padding-top: 0.75rem; }
+        .facilitator-list b { display: block; font-size: 1.15rem; }
+        .facilitator-list span { color: var(--text-muted-dark); font-size: 0.98rem; }
+        .team-subhead { margin-top: 4.5rem; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 900; }
+
+        .fellowship-closed { margin-top: 2.5rem; margin-bottom: 1.5rem; font-weight: 700; }
+        @media (max-width: 768px) {
+            .section { padding: 4.5rem 0; }
+            .hero-content p { font-size: 1.15rem; }
+            .about-text p { font-size: 1.25rem; }
+            .grid-3 { grid-template-columns: 1fr; gap: 2.5rem; margin-top: 2.5rem; }
+            .team-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
+            .resource-card { padding: 1.75rem; }
+            .fellowship-banner { aspect-ratio: 3 / 1; }
+            .contact-link { text-underline-offset: 5px; }
+        }
+
+        /* =========================================================
+           SHARED ACCESSIBILITY + MOBILE STYLES (same on every page)
+           ========================================================= */
+        html.xl-text { --base-font-size: 24px; }
+        html.wide-spacing body { line-height: 1.9; }
+        html.wide-spacing p, html.wide-spacing li, html.wide-spacing dd, html.wide-spacing td { letter-spacing: 0.03em; word-spacing: 0.12em; }
+        html.underline-links main a:not(.btn), html.underline-links footer a { text-decoration: underline !important; text-underline-offset: 3px; }
+        html.reduce-motion { scroll-behavior: auto; }
+        html.reduce-motion *, html.reduce-motion *::before, html.reduce-motion *::after { transition: none !important; animation: none !important; }
+        html.reduce-motion .hero-glow { display: none; }
+
+        h1, h2, h3, h4, h5, p, li, dd, dt, td, th, a { overflow-wrap: break-word; }
+        .dist > div, .dist dl > * { min-width: 0; }
+        .dist dl { grid-template-columns: auto minmax(0, 1fr); }
+        @media (max-width: 480px) { .dist dl { grid-template-columns: 1fr; } }
+        img { max-width: 100%; }
+        .btn { max-width: 100%; text-align: center; }
+        .team-grid > *, .grid-3 > *, .cohort-grid > * { min-width: 0; }
+
+        .skip-link {
+            position: absolute; left: 1rem; top: -200px; z-index: 10001;
+            background: var(--neon-lime); color: #1A1A1A; padding: 0.75rem 1.25rem;
+            border-radius: 6px; font-weight: 900;
+        }
+        .skip-link:focus { top: 1rem; }
+        main:focus { outline: none; }
+
+        a:focus-visible, button:focus-visible, input:focus-visible, summary:focus-visible, [tabindex]:focus-visible {
+            outline: 3px solid var(--lavender); outline-offset: 3px; border-radius: 4px;
+        }
+        header a:focus-visible, header button:focus-visible, .section-dark a:focus-visible,
+        .section-dark button:focus-visible, .section-dark input:focus-visible, .section-dark summary:focus-visible,
+        .hero-collage a:focus-visible, .prep-hero a:focus-visible, .guide-hero a:focus-visible { outline-color: var(--neon-lime); }
+        html.high-contrast *:focus-visible { outline-color: #FFFF00 !important; }
+
+        /* Accessibility panel */
+        .a11y-menu { width: 260px; max-height: calc(100vh - 110px); overflow-y: auto; }
+        .a11y-menu[hidden] { display: none !important; }
+        .a11y-title { padding: 14px 15px 6px; font-size: 0.75rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-main); }
+        .a11y-option { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; }
+        .a11y-option .state { font-size: 0.8rem; font-weight: 700; opacity: 0.8; white-space: nowrap; }
+        .a11y-option[aria-pressed="true"] { background-color: var(--steel-blue); color: #FFFFFF; }
+        html.high-contrast .a11y-option[aria-pressed="true"] { background-color: #FFFF00; color: #000000; }
+        .a11y-reset { color: var(--steel-blue); }
+        .a11y-note { padding: 8px 15px 14px; font-size: 0.8rem; color: var(--text-muted-light); }
+
+        /* Mobile menu: switch to the hamburger before the long nav labels collide */
+        @media (max-width: 1100px) {
+            .hamburger { display: flex; }
+            .nav-filler { display: none; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; height: 100dvh;
+                background-color: var(--bg-alt); color: var(--text-alt);
+                flex-direction: column; justify-content: center; align-items: center;
+                gap: 2.2rem; overflow-y: auto; padding: 5rem 1rem 2rem;
+                visibility: hidden;
+                transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1), visibility 0s linear 0.4s;
+            }
+            .nav-links.active { right: 0; visibility: visible; transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1); }
+            .nav-links a { font-size: 1.2rem; white-space: normal; text-align: center; }
+            .hamburger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+            .hamburger.active span:nth-child(2) { opacity: 0; }
+            .hamburger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+        }
+        .hamburger { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; }
+        body.menu-open { overflow: hidden; }
+
+        @media (max-width: 768px) {
+            .container { width: auto; margin-left: 16px; margin-right: 16px; }
+            .brand { font-size: 1.25rem; }
+            .logo-img { height: 36px; }
+            h1 { font-size: clamp(2.2rem, 11vw, 3.5rem); }
+            h2 { font-size: clamp(1.9rem, 8vw, 2.5rem); }
+            html.xl-text h1 { font-size: 11vw; }
+            html.xl-text h2 { font-size: 8.5vw; }
+        }
+        @media (max-width: 480px) {
+            .a11y-widget { bottom: 12px; right: 12px; }
+            .a11y-toggle-btn { padding: 12px; }
+            .a11y-toggle-btn .a11y-label {
+                position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+            }
+        }
+        @media print {
+            .skip-link, .a11y-widget { display: none !important; }
+        }
+
+        /* --- PALETTE: red on light backgrounds, neon green on dark ones (no blue) --- */
+        .section-dark, .hero-collage, .prep-hero, .guide-hero, header { --lavender: var(--neon-lime); }
+        html.high-contrast .section-dark, html.high-contrast .hero-collage, html.high-contrast .prep-hero,
+        html.high-contrast .guide-hero, html.high-contrast header { --lavender: #FFFF00; }
+        html.dark-mode body { --lavender: var(--neon-lime); }
+        .callout.warn { border-left-color: var(--steel-blue); }
+        .callout.warn .callout-label { color: var(--steel-blue); }
+        .section-dark .callout.warn { border-left-color: var(--neon-lime); }
+        .section-dark .callout.warn .callout-label { color: var(--neon-lime); }
+        .cohort-card { border-top-color: var(--steel-blue); }
+        .cohort-tag { background: var(--steel-blue); color: #FFFFFF; }
+        .cohort-card.peace { border-top-color: var(--neon-lime); }
+        .cohort-card.peace .cohort-tag { background: var(--neon-lime); color: #1A1A1A; }
+        .contact-link:hover { color: var(--text-main); }
     </style>
 </head>
 <body id="top">
 
-    <!-- ACCESSIBILITY FLOATING WIDGET -->
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <!-- ACCESSIBILITY PANEL (shared by every page; settings are remembered across pages) -->
     <div class="a11y-widget">
-        <div class="a11y-menu" id="a11y-menu">
-            <button class="a11y-option" id="btn-text-size">Increase Font Size</button>
-            <button class="a11y-option" id="btn-dyslexia">Dyslexia Font</button>
-            <button class="a11y-option" id="btn-contrast">High Contrast</button>
-            <button class="a11y-option" id="btn-theme">Dark Mode Toggle</button>
+        <div class="a11y-menu" id="a11y-menu" role="group" aria-labelledby="a11y-title" hidden>
+            <p class="a11y-title" id="a11y-title">Display settings</p>
+            <button type="button" class="a11y-option" id="btn-text-size">Text size <span class="state" id="text-size-state">Normal</span></button>
+            <button type="button" class="a11y-option" data-setting="dyslexia-font" aria-pressed="false">Dyslexia-friendly font</button>
+            <button type="button" class="a11y-option" data-setting="wide-spacing" aria-pressed="false">Wider spacing</button>
+            <button type="button" class="a11y-option" data-setting="high-contrast" aria-pressed="false">High contrast</button>
+            <button type="button" class="a11y-option" data-setting="dark-mode" aria-pressed="false">Dark mode</button>
+            <button type="button" class="a11y-option" data-setting="underline-links" aria-pressed="false">Underline links</button>
+            <button type="button" class="a11y-option" data-setting="reduce-motion" aria-pressed="false">Reduce motion</button>
+            <button type="button" class="a11y-option a11y-reset" id="btn-a11y-reset">Reset to default</button>
+            <p class="a11y-note">Your choices are saved in this browser and apply on every page.</p>
         </div>
-        <button class="a11y-toggle-btn" id="a11y-toggle" aria-expanded="false" aria-controls="a11y-menu">
+        <button type="button" class="a11y-toggle-btn" id="a11y-toggle" aria-expanded="false" aria-controls="a11y-menu" aria-label="Accessibility settings">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <circle cx="12" cy="12" r="10"></circle>
                 <circle cx="12" cy="10" r="3"></circle>
                 <path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"></path>
             </svg>
-            Accessibility
+            <span class="a11y-label">Accessibility</span>
         </button>
     </div>
 
@@ -774,13 +953,13 @@
     <header id="main-header">
         <div class="container nav-container">
             <div class="brand-container">
-                <a href="#top" class="brand">
-                    <img src="logo.svg" alt="Until Tomorrow Logo" class="logo-img">
+                <a href="#top" class="brand" aria-label="until tomorrow, home">
+                    <img src="logo.svg" alt="" class="logo-img">
                     until tomorrow
                 </a>
             </div>
 
-            <nav class="nav-links" id="nav-links">
+            <nav class="nav-links" id="nav-links" aria-label="Main">
                 <a href="#about" class="nav-item">ABOUT</a>
                 <a href="#team" class="nav-item">OUR TEAM</a>
                 <a href="#fellowship" class="nav-item">CHILD SAFETY &amp; AI FELLOWSHIP</a>
@@ -791,7 +970,7 @@
 
             <div class="nav-filler"></div>
 
-            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+            <button type="button" class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -809,7 +988,7 @@
         </div>
     </section>
 
-    <main>
+    <main id="main" tabindex="-1">
         <!-- ABOUT SECTION -->
         <section id="about" class="section section-light">
             <div class="container about-grid">
@@ -849,21 +1028,30 @@
 
                 <div class="team-grid">
                     <div class="team-member">
-                        <div class="team-photo-placeholder"><img src="natasha.jpeg" alt="Natasha Litherland"></div>
+                        <div class="team-photo-placeholder"><img src="natasha.jpeg" alt="Portrait of Natasha Litherland"></div>
                         <h3>Natasha Litherland</h3>
                         <p>Founder &amp; Director</p>
                     </div>
                     <div class="team-member">
-                        <div class="team-photo-placeholder"><img src="iqra.jpeg" alt="Iqra Mumtaz"></div>
+                        <div class="team-photo-placeholder"><img src="iqra.jpeg" alt="Portrait of Iqra Mumtaz"></div>
                         <h3>Iqra Mumtaz</h3>
                         <p>Deputy Director</p>
                     </div>
                     <div class="team-member">
-                        <div class="team-photo-placeholder">?</div>
+                        <div class="team-photo-placeholder" aria-hidden="true">?</div>
                         <h3>This could be you!</h3>
                         <a href="https://forms.gle/MR19qakm6j8GHUyHA" class="btn btn-lime team-contact-btn" target="_blank" rel="noopener noreferrer">Contact</a>
                     </div>
                 </div>
+
+                <h3 class="team-subhead">Fellowship <span class="text-lime">facilitators</span></h3>
+                <ul class="facilitator-list">
+                    <li><b>Natasha Litherland</b><span>Fellowship lead · Facilitator, Cohort 1 · Backup facilitator, Peace &amp; Policy</span></li>
+                    <li><b>Iqra Mumtaz</b><span>Backup facilitator, Cohort 1 · Leads the Week 6 simulation for all cohorts</span></li>
+                    <li><b>Alina Hekkala</b><span>Facilitator, Cohort 2</span></li>
+                    <li><b>Dongjie Chen</b><span>Backup facilitator, Cohort 2</span></li>
+                    <li><b>Aliki Ioannides</b><span>Lead, Peace &amp; Policy cohort</span></li>
+                </ul>
             </div>
         </section>
 
@@ -882,40 +1070,94 @@
                         <span>Ages 18–30, from anywhere in the world.</span>
                     </div>
                     <div class="fellowship-detail">
-                        <strong>Cohort</strong>
-                        <span>7–9 participants for deep, discussion-based learning.</span>
+                        <strong>Cohorts</strong>
+                        <span>Three small cohorts for deep, discussion-based learning: Cohort 1, Cohort 2 and the Peace &amp; Policy cohort.</span>
                     </div>
                     <div class="fellowship-detail">
                         <strong>Schedule</strong>
-                        <span>Seven weekly 1.5-hour sessions starting Saturday, October 3, 2026. Tentatively lunchtime CEST, optimised for the final group’s time zones.</span>
+                        <span>Six weekly 1.5-hour sessions on Saturdays, from 10 October to 14 November 2026. Each cohort meets at its own time, chosen for its members’ time zones.</span>
                     </div>
                     <div class="fellowship-detail">
                         <strong>Format</strong>
-                        <span>Highly interactive rather than lecture-based, with activities such as story circles and short readings or videos before each session.</span>
+                        <span>Highly interactive rather than lecture-based, with activities such as story circles, and readings or videos before each session.</span>
                     </div>
                     <div class="fellowship-detail">
                         <strong>The work</strong>
-                        <span>Identify trends, map systems, build future scenarios, and design concrete actions. The programme culminates in a collaborative model-UN-style activity during the final session.</span>
+                        <span>Identify trends, map systems, build future scenarios, and design concrete actions. The programme culminates in a collaborative model-UN-style simulation during the final session.</span>
                     </div>
                     <div class="fellowship-detail">
                         <strong>Partners</strong>
-                        <span>Organised in partnership with ASEF, drawing on methodology from the Copenhagen Institute for Futures Studies and the Development Academy of the Philippines.</span>
+                        <span>Organised in partnership with the Asia-Europe Foundation (ASEF), drawing on methodology from the Copenhagen Institute for Futures Studies and the Development Academy of the Philippines.</span>
                     </div>
                 </div>
 
+
+                <h3 class="fellowship-sub" id="cohorts">Cohorts <span class="text-lime">&amp; facilitators</span></h3>
+                <p class="fellowship-sub-intro">The fellowship is designed and led by Natasha Litherland, the Peace &amp; Policy cohort is designed and led by Aliki Ioannides. All three cohorts follow the same six-step foresight method and the same session plan. The Peace &amp; Policy cohort applies it to children in war, conflict and crisis, with its own reading list.</p>
+                <div class="cohort-grid">
+                    <article class="cohort-card" aria-labelledby="cohort-1-title">
+                        <span class="cohort-tag">Cohort 1</span>
+                        <h4 id="cohort-1-title">Cohort 1</h4>
+                        <p>Children’s rights, AI companions, AI literacy in schools, AI toys and safety by design.</p>
+                        <dl class="cohort-facts">
+                            <div><dt>Facilitator</dt><dd>Natasha Litherland</dd></div>
+                            <div><dt>Backup facilitator</dt><dd>Iqra Mumtaz</dd></div>
+                            <div><dt>Sessions</dt><dd>Saturdays, 08:00 UTC<small>09:00 UTC from 31 October, after Europe’s clock change</small><span class="local-time" data-slots='[["2026-10-10","08:00"],["2026-10-31","09:00"]]'></span></dd></div>
+                        </dl>
+                        <a href="prep-materials.html?cohort=main" class="btn btn-outline btn-small">Cohort 1 prep materials</a>
+                    </article>
+                    <article class="cohort-card" aria-labelledby="cohort-2-title">
+                        <span class="cohort-tag">Cohort 2</span>
+                        <h4 id="cohort-2-title">Cohort 2</h4>
+                        <p>The same programme and readings as Cohort 1, at a different time of day.</p>
+                        <dl class="cohort-facts">
+                            <div><dt>Facilitator</dt><dd>Alina Hekkala</dd></div>
+                            <div><dt>Backup facilitator</dt><dd>Dongjie Chen</dd></div>
+                            <div><dt>Sessions</dt><dd>Saturdays, 01:30 UTC<span class="local-time" data-slots='[["2026-10-10","01:30"]]'></span></dd></div>
+                        </dl>
+                        <a href="prep-materials.html?cohort=main" class="btn btn-outline btn-small">Cohort 2 prep materials</a>
+                    </article>
+                    <article class="cohort-card peace" aria-labelledby="cohort-peace-title">
+                        <span class="cohort-tag">Peace &amp; Policy</span>
+                        <h4 id="cohort-peace-title">Peace &amp; Policy cohort</h4>
+                        <p>Child safety and AI in war, conflict and humanitarian settings: AI-enabled warfare, AI in crisis education, children’s data in humanitarian AI, and the children whose labour trains AI.</p>
+                        <dl class="cohort-facts">
+                            <div><dt>Cohort lead</dt><dd>Aliki Ioannides</dd></div>
+                            <div><dt>Backup facilitator</dt><dd>Natasha Litherland</dd></div>
+                            <div><dt>Sessions</dt><dd>Saturdays, 14:00 UTC<small>15:00 UTC from 7 November, after North America’s clock change</small><span class="local-time" data-slots='[["2026-10-10","14:00"],["2026-11-07","15:00"]]'></span></dd></div>
+                        </dl>
+                        <a href="prep-materials.html?cohort=peace" class="btn btn-outline btn-small">Peace &amp; Policy prep materials</a>
+                    </article>
+                </div>
+
+                <h3 class="fellowship-sub" id="schedule">Six weeks, <span class="text-lime">six steps</span></h3>
+                <table class="schedule-table">
+                    <caption>Every cohort meets once a week on these Saturdays, for exactly 1.5 hours.</caption>
+                    <thead><tr><th scope="col">Week</th><th scope="col">Date</th><th scope="col">Session</th><th scope="col">Read first</th></tr></thead>
+                    <tbody>
+                        <tr><th scope="row">Week 1</th><td data-label="Date">Sat 10 Oct</td><td data-label="Session"><strong>Introduction</strong>: meet your cohort, the topic and the method</td><td data-label="Read first">No reading: bring one question with you</td></tr>
+                        <tr><th scope="row">Week 2</th><td data-label="Date">Sat 17 Oct</td><td data-label="Session"><strong>Framing &amp; Scanning</strong>: choose a focal issue and collect signals of change</td><td data-label="Read first"><a href="prep-materials.html#week-2">Week 2 prep</a></td></tr>
+                        <tr><th scope="row">Week 3</th><td data-label="Date">Sat 24 Oct</td><td data-label="Session"><strong>Sensemaking</strong>: map how the signals connect</td><td data-label="Read first"><a href="prep-materials.html#week-3">Week 3 prep</a></td></tr>
+                        <tr><th scope="row">Week 4</th><td data-label="Date">Sat 31 Oct</td><td data-label="Session"><strong>Scenarios</strong>: build four possible futures for 2040</td><td data-label="Read first"><a href="prep-materials.html#week-4">Week 4 prep</a></td></tr>
+                        <tr><th scope="row">Week 5</th><td data-label="Date">Sat 7 Nov</td><td data-label="Session"><strong>Backcasting &amp; Refinement</strong>: plan back from a desired future, then stress-test it</td><td data-label="Read first"><a href="prep-materials.html#week-5">Week 5 prep</a></td></tr>
+                        <tr><th scope="row">Week 6</th><td data-label="Date">Sat 14 Nov</td><td data-label="Session"><strong>Simulation game</strong>: a model-UN-style negotiation using everything so far, led by Iqra Mumtaz for all cohorts</td><td data-label="Read first"><a href="prep-materials.html#week-6">Week 6 prep</a></td></tr>
+                    </tbody>
+                </table>
+
                 <img src="fellowship_banner.png" alt="Child Safety &amp; AI Fellowship: Futures Thinking in Practice" class="fellowship-banner">
 
-                <p class="fellowship-deadline">Applications close October 1, 2026 at 23:59. Late applications will not be processed.</p>
-                <a href="https://forms.gle/rEDP8PJAG5smtjFY7" class="btn btn-lime" target="_blank" rel="noopener noreferrer">Apply for the fellowship</a>
+                <p class="fellowship-closed">Applications for this first edition closed on 1 October 2026. Interested in a future cohort? Let us know.</p>
+                <a href="https://forms.gle/MR19qakm6j8GHUyHA" class="btn btn-lime" target="_blank" rel="noopener noreferrer">Ask about future cohorts</a>
 
                 <div class="fellowship-guide">
                     <div>
                         <strong>Fellowship resources</strong>
-                        <p>Our foresight guide explains every step of the fellowship's method, from framing to backcasting. The prep materials page lists what to read, watch and prepare before each session.</p>
+                        <p>Our foresight guide explains every step of the fellowship's method, from framing to backcasting. The prep materials page lists what to read, watch and prepare before each session, for Cohorts 1 &amp; 2 and for the Peace &amp; Policy cohort.</p>
                     </div>
                     <div class="btn-row">
                         <a href="foresight-guide.html" class="btn btn-outline">Foresight guide</a>
-                        <a href="prep-materials.html" class="btn btn-outline">Weekly prep materials</a>
+                        <a href="prep-materials.html?cohort=main" class="btn btn-outline">Prep: Cohorts 1 &amp; 2</a>
+                        <a href="prep-materials.html?cohort=peace" class="btn btn-outline">Prep: Peace &amp; Policy</a>
                     </div>
                 </div>
             </div>
@@ -933,7 +1175,7 @@
                             <h3>AI Ethics Toolkit</h3>
                             <p>A comprehensive guide for students navigating the moral implications of artificial intelligence in education and creation.</p>
                         </div>
-                        <span class="btn btn-blue btn-small resource-coming-soon">Coming soon</span>
+                        <span class="btn btn-blue btn-small resource-coming-soon" aria-disabled="true">Coming soon</span>
                     </div>
                     <div class="resource-card resource-card-featured">
                         <div>
@@ -948,7 +1190,7 @@
                             <h3>The Until Tomorrow Manifesto</h3>
                             <p>Our foundational document detailing the youth perspective on the rapid acceleration of emerging technologies.</p>
                         </div>
-                        <span class="btn btn-blue btn-small resource-coming-soon">Coming soon</span>
+                        <span class="btn btn-blue btn-small resource-coming-soon" aria-disabled="true">Coming soon</span>
                     </div>
                 </div>
             </div>
@@ -957,7 +1199,7 @@
         <!-- JOIN US SECTION -->
         <section id="join" class="section section-dark">
             <div class="container split-grid">
-                <div class="img-placeholder" role="img" aria-label="Young leaders listening during a session at the ASEF Young Leaders Summit"></div>
+                <div class="img-placeholder" role="img" aria-label="Young leaders listening during a session at the Asia-Europe Foundation (ASEF) Young Leaders Summit"></div>
                 <div>
                     <h2>Built by youth <br>Built for <span class="text-lime">tomorrow</span></h2>
                     <p>The decisions made about technology today will disproportionately affect young people. <strong>Until Tomorrow</strong> ensures that youth are not just subjects of the future, but active architects of it. Join our community, start a chapter, or partner with us.</p>
@@ -971,7 +1213,7 @@
             <div class="container">
                 <h2>Let's build <span class="text-blue">together</span></h2>
                 <p>Have questions, want to partner, or looking to get involved?</p>
-                <a href="https://forms.gle/MR19qakm6j8GHUyHA" class="contact-link" target="_blank" rel="noopener noreferrer">Contact us</a>
+                <a href="https://forms.gle/MR19qakm6j8GHUyHA" class="contact-link" target="_blank" rel="noopener noreferrer">Contact us<span class="visually-hidden"> (opens a form in a new tab)</span></a>
             </div>
         </section>
     </main>
@@ -979,8 +1221,8 @@
     <!-- FOOTER -->
     <footer class="section-light">
         <div class="container">
-            <a href="#top" class="brand footer-brand">
-                <img src="logo.svg" alt="Until Tomorrow Logo" class="logo-img">
+            <a href="#top" class="brand footer-brand" aria-label="until tomorrow, back to top">
+                <img src="logo.svg" alt="" class="logo-img">
                 until tomorrow
             </a>
             <nav class="footer-links" aria-label="Footer">
@@ -1003,70 +1245,104 @@
             else header.classList.remove('scrolled');
         });
 
-        // --- MOBILE MENU LOGIC ---
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.getElementById('nav-links');
-        const navItems = document.querySelectorAll('.nav-item');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            const isOpen = navLinks.classList.contains('active');
-            hamburger.setAttribute('aria-expanded', isOpen);
-            if (isOpen) header.classList.add('scrolled');
-            else if (window.scrollY <= 50) header.classList.remove('scrolled');
-        });
-
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-                hamburger.setAttribute('aria-expanded', false);
+        // --- MOBILE MENU (shared) ---
+        (function () {
+            const header = document.getElementById('main-header');
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+            function setMenu(open) {
+                hamburger.classList.toggle('active', open);
+                navLinks.classList.toggle('active', open);
+                hamburger.setAttribute('aria-expanded', open);
+                hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+                document.body.classList.toggle('menu-open', open);
+                if (open) header.classList.add('scrolled');
+                else if (window.scrollY <= 50) header.classList.remove('scrolled');
+            }
+            hamburger.addEventListener('click', () => setMenu(!navLinks.classList.contains('active')));
+            document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', () => setMenu(false)));
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) { setMenu(false); hamburger.focus(); }
             });
-        });
+            window.addEventListener('resize', () => { if (window.innerWidth > 1100) setMenu(false); });
+        })();
 
-        // --- ACCESSIBILITY LOGIC ---
-        const html = document.documentElement;
-        const a11yToggle = document.getElementById('a11y-toggle');
-        const a11yMenu = document.getElementById('a11y-menu');
+        // --- ACCESSIBILITY PANEL (shared; settings saved across pages) ---
+        (function () {
+            const html = document.documentElement;
+            const KEY = 'ut-a11y-v1';
+            const toggle = document.getElementById('a11y-toggle');
+            const menu = document.getElementById('a11y-menu');
+            const sizeBtn = document.getElementById('btn-text-size');
+            const sizeState = document.getElementById('text-size-state');
+            const SIZES = [['', 'Normal'], ['large-text', 'Large'], ['xl-text', 'Largest']];
+            const CLASSES = ['large-text', 'xl-text', 'dyslexia-font', 'wide-spacing', 'high-contrast', 'dark-mode', 'underline-links', 'reduce-motion'];
 
-        const btnTextSize = document.getElementById('btn-text-size');
-        const btnDyslexia = document.getElementById('btn-dyslexia');
-        const btnContrast = document.getElementById('btn-contrast');
-        const btnTheme = document.getElementById('btn-theme');
-
-        a11yToggle.addEventListener('click', () => {
-            a11yMenu.classList.toggle('show');
-            a11yToggle.setAttribute('aria-expanded', a11yMenu.classList.contains('show'));
-        });
-
-        btnTextSize.addEventListener('click', () => {
-            html.classList.toggle('large-text');
-            btnTextSize.classList.toggle('active-state');
-        });
-
-        btnDyslexia.addEventListener('click', () => {
-            html.classList.toggle('dyslexia-font');
-            btnDyslexia.classList.toggle('active-state');
-        });
-
-        btnContrast.addEventListener('click', () => {
-            html.classList.toggle('high-contrast');
-            btnContrast.classList.toggle('active-state');
-            if (html.classList.contains('high-contrast')) {
-                html.classList.remove('dark-mode');
-                btnTheme.classList.remove('active-state');
+            function save() {
+                const s = {};
+                CLASSES.forEach(c => { if (html.classList.contains(c)) s[c] = 1; });
+                try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) { /* settings last for this visit only */ }
             }
-        });
-
-        btnTheme.addEventListener('click', () => {
-            html.classList.toggle('dark-mode');
-            btnTheme.classList.toggle('active-state');
-            if (html.classList.contains('dark-mode')) {
-                html.classList.remove('high-contrast');
-                btnContrast.classList.remove('active-state');
+            function sync() {
+                document.querySelectorAll('[data-setting]').forEach(b => b.setAttribute('aria-pressed', html.classList.contains(b.dataset.setting)));
+                const i = html.classList.contains('xl-text') ? 2 : html.classList.contains('large-text') ? 1 : 0;
+                sizeState.textContent = SIZES[i][1];
+                sizeBtn.setAttribute('aria-label', 'Text size: ' + SIZES[i][1] + '. Activate to change.');
             }
-        });
+            function setOpen(open) {
+                menu.hidden = !open;
+                menu.classList.toggle('show', open);
+                toggle.setAttribute('aria-expanded', open);
+            }
+
+            toggle.addEventListener('click', () => setOpen(menu.hidden));
+            document.addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) { setOpen(false); toggle.focus(); } });
+            document.addEventListener('click', e => { if (!menu.hidden && !e.target.closest('.a11y-widget')) setOpen(false); });
+
+            sizeBtn.addEventListener('click', () => {
+                const i = html.classList.contains('xl-text') ? 2 : html.classList.contains('large-text') ? 1 : 0;
+                html.classList.remove('large-text', 'xl-text');
+                const next = SIZES[(i + 1) % SIZES.length][0];
+                if (next) html.classList.add(next);
+                sync(); save();
+            });
+            document.querySelectorAll('[data-setting]').forEach(b => b.addEventListener('click', () => {
+                const c = b.dataset.setting;
+                html.classList.toggle(c);
+                // High contrast and dark mode are alternative colour schemes
+                if (c === 'high-contrast' && html.classList.contains(c)) html.classList.remove('dark-mode');
+                if (c === 'dark-mode' && html.classList.contains(c)) html.classList.remove('high-contrast');
+                sync(); save();
+            }));
+            document.getElementById('btn-a11y-reset').addEventListener('click', () => {
+                html.classList.remove(...CLASSES);
+                sync(); save();
+            });
+            sync();
+        })();
+
+        // --- SESSION TIMES IN THE VISITOR'S OWN TIME ZONE ---
+        (function () {
+            const LAST = '2026-11-14';
+            let tz = '';
+            try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''; } catch (e) {}
+            const fmt = new Intl.DateTimeFormat(undefined, { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
+            document.querySelectorAll('.local-time').forEach(el => {
+                const slots = JSON.parse(el.dataset.slots);
+                const now = Date.now();
+                // Saturdays from 10 Oct to 14 Nov; find the next session that hasn't finished
+                for (let d = new Date('2026-10-10T00:00:00Z'); d.toISOString().slice(0, 10) <= LAST; d.setUTCDate(d.getUTCDate() + 7)) {
+                    const day = d.toISOString().slice(0, 10);
+                    const slot = slots.filter(s => s[0] <= day).pop();
+                    const start = new Date(day + 'T' + slot[1] + ':00Z');
+                    if (start.getTime() + 90 * 60000 > now) {
+                        el.textContent = 'Next session in your time' + (tz ? ' (' + tz.replace(/_/g, ' ') + ')' : '') + ': ' + fmt.format(start);
+                        return;
+                    }
+                }
+                el.textContent = 'This edition has finished.';
+            });
+        })();
     </script>
 </body>
 </html>
