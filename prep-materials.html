@@ -544,6 +544,25 @@
             .prep-table a[href^="http"]::after, .view-list a[href^="http"]::after { content: ""; }
         }
 
+        /* Fellows' recommendations */
+        .recs-intro { max-width: 860px; color: var(--muted); font-size: 1.15rem; margin-bottom: 1rem; }
+        .recs-how { max-width: 860px; color: var(--muted); font-size: 1rem; margin-bottom: 2rem; }
+        .recs-how b { color: var(--text-alt); }
+        .rec-empty { padding: 1.5rem; border: 1px dashed var(--line); border-radius: 8px; color: var(--muted); max-width: 860px; }
+        .rec-filters { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+        .rec-chip { min-height: 44px; padding: 0.5rem 1rem; border-radius: 6px; border: 2px solid var(--line); background: transparent; color: var(--text-alt); font: inherit; font-weight: 700; font-size: 0.92rem; cursor: pointer; }
+        .rec-chip[aria-pressed="true"] { background: var(--neon-lime); border-color: var(--neon-lime); color: #1A1A1A; }
+        .rec-list { list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 1rem; }
+        .rec { padding: 1.3rem; border-radius: 8px; background: var(--surface); border: 1px solid var(--line); border-top: 4px solid var(--neon-lime); }
+        .rec[hidden] { display: none; }
+        .rec-title { font-size: 1.1rem; font-weight: 900; margin: 0.6rem 0 0.4rem; }
+        .rec-title a { text-decoration: underline; text-decoration-color: var(--neon-lime); text-underline-offset: 3px; }
+        .rec p { font-size: 0.98rem; color: var(--muted); }
+        .rec-cn { margin-top: 0.5rem; font-size: 0.9rem !important; }
+        .rec-meta { margin-top: 0.6rem; font-size: 0.85rem !important; font-weight: 700; }
+        .rec-field { color: var(--neon-lime); }
+        @media print { .rec-filters { display: none; } }
+
         /* =========================================================
            SHARED ACCESSIBILITY + MOBILE STYLES (same on every page)
            ========================================================= */
@@ -716,6 +735,7 @@
             <div class="hero-actions">
                 <a href="#weeks" class="btn btn-lime">Choose your cohort</a>
                 <a href="foresight-guide.html" class="btn btn-ghost">Open the foresight guide</a>
+                <a href="#recommendations" class="btn btn-ghost">Recommended by fellows</a>
             </div>
         </div>
     </section>
@@ -2409,6 +2429,129 @@
                 </div>
             </div>
         </section>
+        <!-- FELLOWS' RECOMMENDATIONS (anonymous; shared across all cohorts) -->
+        <section id="recommendations" class="section section-dark recs" aria-labelledby="recs-title">
+            <div class="container">
+                <span class="eyebrow">From all three cohorts</span>
+                <h2 id="recs-title">Recommended <span class="text-lime">by fellows</span></h2>
+                <p class="recs-intro">Our fellows come from many countries and many fields: policy and law, technology, design and the creative arts, the humanities and more. This is where we collect the books, articles, films, podcasts, tools and projects that come up in our sessions, so everyone can learn from each other's perspectives. Recommendations are listed anonymously.</p>
+                <p class="recs-how"><b>Want to share something?</b> Mention it during a session or send it to your facilitator. We add new recommendations after each week.</p>
+                <div class="rec-filters" role="group" aria-label="Filter by field">
+                    <button type="button" class="rec-chip" data-filter="" aria-pressed="true">All</button><button type="button" class="rec-chip" data-filter="Policy &amp; law" aria-pressed="false">Policy &amp; law</button><button type="button" class="rec-chip" data-filter="Technology &amp; research" aria-pressed="false">Technology &amp; research</button><button type="button" class="rec-chip" data-filter="Design &amp; products" aria-pressed="false">Design &amp; products</button><button type="button" class="rec-chip" data-filter="Society &amp; culture" aria-pressed="false">Society &amp; culture</button><button type="button" class="rec-chip" data-filter="Lived experience" aria-pressed="false">Lived experience</button>
+                </div>
+                <ul class="rec-list">
+                    <li class="rec" data-field="Technology &amp; research">
+                        <span class="fmt fmt-read"><span aria-hidden="true">📄</span> Read</span>
+                        <h3 class="rec-title"><a href="https://arxiv.org/abs/2608.07902" target="_blank" rel="noopener noreferrer">Beyond &quot;I Can&#x27;t Help With That&quot;: How Child Safety Experts Evaluate AI Chatbot Safety <span class="ext" aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></h3>
+                        <p>Interviews with people who work with vulnerable young people show that a chatbot simply refusing to engage with minors can cause harm of its own, especially when children rely on it.</p>
+                        <p class="rec-meta"><span class="rec-field">Technology &amp; research</span> · Shared in Week 1</p>
+                    </li>
+                    <li class="rec" data-field="Technology &amp; research">
+                        <span class="fmt fmt-read"><span aria-hidden="true">📄</span> Read</span>
+                        <h3 class="rec-title"><a href="https://www.commonsensemedia.org/press-releases/chatgpt-for-teens-poses-unacceptable-risk-to-kids-common-sense-media-finds" target="_blank" rel="noopener noreferrer">ChatGPT for Teens poses &quot;unacceptable risk&quot; (AI risk assessment) <span class="ext" aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></h3>
+                        <p>Common Sense Media. A prompt to think about the gap between having safety mechanisms in place and making sure they work in realistic conversations with young people.</p>
+                        <p class="rec-meta"><span class="rec-field">Technology &amp; research</span> · Shared in Week 1</p>
+                    </li>
+                    <li class="rec" data-field="Policy &amp; law">
+                        <span class="fmt fmt-read"><span aria-hidden="true">📄</span> Read</span>
+                        <h3 class="rec-title"><a href="https://www.kqed.org/news/12103289/keep-teens-off-chatgpt-says-youth-ai-safety-institute" target="_blank" rel="noopener noreferrer">Keep teens off ChatGPT, says Youth AI Safety Institute <span class="ext" aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></h3>
+                        <p>KQED news coverage of the debate over restricting teens&#x27; access to chatbots.</p>
+                        <p class="rec-meta"><span class="rec-field">Policy &amp; law</span> · Shared in Week 1</p>
+                    </li>
+                    <li class="rec" data-field="Policy &amp; law">
+                        <span class="fmt fmt-read"><span aria-hidden="true">📄</span> Read</span>
+                        <h3 class="rec-title"><a href="https://www.unicef.org/innocenti/reports/policy-guidance-ai-children" target="_blank" rel="noopener noreferrer">Policy guidance on AI for children <span class="ext" aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></h3>
+                        <p>UNICEF on building children&#x27;s rights and safety into AI systems from the start.</p>
+                        <p class="rec-meta"><span class="rec-field">Policy &amp; law</span> · Shared in Week 1</p>
+                    </li>
+                    <li class="rec" data-field="Policy &amp; law">
+                        <span class="fmt fmt-read"><span aria-hidden="true">📄</span> Read</span>
+                        <h3 class="rec-title"><a href="https://www.ofcom.org.uk/online-safety/protecting-children/Research-to-support-global-efforts-to-tackle-child-sexual-abuse-and-exploitation-online" target="_blank" rel="noopener noreferrer">Research to support global efforts to tackle child sexual abuse and exploitation online <span class="ext" aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></h3>
+                        <p>Ofcom (UK regulator) research, including how easy AI-generated abuse material is to access.</p>
+                        <p class="rec-cn"><span aria-hidden="true">⚠️</span> <b>Content note:</b> child sexual abuse material.</p>
+                        <p class="rec-meta"><span class="rec-field">Policy &amp; law</span> · Shared in Week 1</p>
+                    </li>
+                    <li class="rec" data-field="Policy &amp; law">
+                        <span class="fmt fmt-read"><span aria-hidden="true">📄</span> Read</span>
+                        <h3 class="rec-title"><a href="https://isd.gov.gh/?p=16234" target="_blank" rel="noopener noreferrer">Ghana&#x27;s National Artificial Intelligence Strategy <span class="ext" aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></h3>
+                        <p>How AI policy is being implemented in Ghana: a view from outside the usual US and European debates.</p>
+                        <p class="rec-meta"><span class="rec-field">Policy &amp; law</span> · Shared in Week 1</p>
+                    </li>
+                    <li class="rec" data-field="Society &amp; culture">
+                        <span class="fmt fmt-read"><span aria-hidden="true">▶️</span> Watch</span>
+                        <h3 class="rec-title"><a href="https://www.youtube.com/watch?v=byHRuNvNp38" target="_blank" rel="noopener noreferrer">Video: AI-facilitated image-based abuse <span class="ext" aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></h3>
+                        <p>An educational resource on deepfakes and explicit AI-generated images, featured by the Daniel Morcombe Foundation in Australia.</p>
+                        <p class="rec-cn"><span aria-hidden="true">⚠️</span> <b>Content note:</b> deepfakes and sexually explicit AI-generated images.</p>
+                        <p class="rec-meta"><span class="rec-field">Society &amp; culture</span> · Shared in Week 1</p>
+                    </li>
+                    <li class="rec" data-field="Lived experience">
+                        <span class="fmt fmt-read"><span aria-hidden="true">▶️</span> Watch</span>
+                        <h3 class="rec-title"><a href="https://youtu.be/juQ0C7BMDcE" target="_blank" rel="noopener noreferrer">Video: interview with a mother whose son died by suicide after talking to an AI chatbot <span class="ext" aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></h3>
+                        <p>A family&#x27;s account of what happened, and what they want to change.</p>
+                        <p class="rec-cn"><span aria-hidden="true">⚠️</span> <b>Content note:</b> suicide.</p>
+                        <p class="rec-meta"><span class="rec-field">Lived experience</span> · Shared in Week 1</p>
+                    </li>
+                    <li class="rec" data-field="Society &amp; culture">
+                        <span class="fmt fmt-read"><span aria-hidden="true">📄</span> Read</span>
+                        <h3 class="rec-title"><a href="https://www.nytimes.com/by/kashmir-hill" target="_blank" rel="noopener noreferrer">Reporting by Kashmir Hill <span class="ext" aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></h3>
+                        <p>New York Times articles documenting how conversations with AI have affected people&#x27;s mental wellbeing.</p>
+                        <p class="rec-cn"><span aria-hidden="true">⚠️</span> <b>Content note:</b> mental health crises and suicide.</p>
+                        <p class="rec-meta"><span class="rec-field">Society &amp; culture</span> · Shared in Week 1</p>
+                    </li>
+                    <li class="rec" data-field="Society &amp; culture">
+                        <span class="fmt fmt-read"><span aria-hidden="true">📚</span> Book</span>
+                        <h3 class="rec-title">The New Age of Sexism, by Laura Bates</h3>
+                        <p>How AI and new technology are reshaping misogyny. A reminder that women and girls should not be siloed or left behind in debates about AI safety and ethics.</p>
+                        <p class="rec-cn"><span aria-hidden="true">⚠️</span> <b>Content note:</b> sexual violence and abuse.</p>
+                        <p class="rec-meta"><span class="rec-field">Society &amp; culture</span> · Shared in Week 1</p>
+                    </li>
+                    <li class="rec" data-field="Technology &amp; research">
+                        <span class="fmt fmt-read"><span aria-hidden="true">📚</span> Book</span>
+                        <h3 class="rec-title">The Alignment Problem, by Brian Christian</h3>
+                        <p>An accessible history of the effort to make AI systems do what we actually intend.</p>
+                        <p class="rec-meta"><span class="rec-field">Technology &amp; research</span> · Shared in Week 1</p>
+                    </li>
+                    <li class="rec" data-field="Society &amp; culture">
+                        <span class="fmt fmt-read"><span aria-hidden="true">📚</span> Book</span>
+                        <h3 class="rec-title">The Cyber Effect, by Mary Aiken</h3>
+                        <p>A cyberpsychologist on how technology shapes behaviour, with a focus on children and young people.</p>
+                        <p class="rec-meta"><span class="rec-field">Society &amp; culture</span> · Shared in Week 1</p>
+                    </li>
+                    <li class="rec" data-field="Design &amp; products">
+                        <span class="fmt fmt-read"><span aria-hidden="true">📄</span> Read</span>
+                        <h3 class="rec-title"><a href="https://www.nbcwashington.com/news/national-international/meta-muse-ai-agent/4159150/" target="_blank" rel="noopener noreferrer">Meta&#x27;s Muse AI agent <span class="ext" aria-hidden="true">↗</span><span class="visually-hidden"> (opens in a new tab)</span></a></h3>
+                        <p>A new adults-only AI product whose playful design appeals to children: an example of innovation outpacing regulation.</p>
+                        <p class="rec-meta"><span class="rec-field">Design &amp; products</span> · Shared in Week 1</p>
+                    </li>
+                    <li class="rec" data-field="Society &amp; culture">
+                        <span class="fmt fmt-read"><span aria-hidden="true">💡</span> Idea</span>
+                        <h3 class="rec-title">The hidden cost of convenience</h3>
+                        <p>Look for essays in cultural magazines and on Substack arguing that the convenience AI brings to our lives comes at a cost.</p>
+                        <p class="rec-meta"><span class="rec-field">Society &amp; culture</span> · Shared in Week 1</p>
+                    </li>
+                    <li class="rec" data-field="Design &amp; products">
+                        <span class="fmt fmt-read"><span aria-hidden="true">💡</span> Idea</span>
+                        <h3 class="rec-title">AI-generated &quot;child&quot; influencers</h3>
+                        <p>AI-made characters presented as children on TikTok, giving &quot;instructions&quot; on how to live. A signal worth watching.</p>
+                        <p class="rec-meta"><span class="rec-field">Design &amp; products</span> · Shared in Week 1</p>
+                    </li>
+                    <li class="rec" data-field="Lived experience">
+                        <span class="fmt fmt-read"><span aria-hidden="true">💡</span> Idea</span>
+                        <h3 class="rec-title">Talk to youth advisory groups</h3>
+                        <p>Some of the best insight comes from asking young people directly. Many organisations run youth advisory groups.</p>
+                        <p class="rec-meta"><span class="rec-field">Lived experience</span> · Shared in Week 1</p>
+                    </li>
+                </ul>
+                <!-- To add a recommendation by hand, copy this inside the list (no names):
+                <li class="rec" data-field="Technology">
+                    <span class="fmt fmt-read">📄 Read</span>
+                    <h3 class="rec-title"><a href="https://..." target="_blank" rel="noopener noreferrer">Title ↗</a></h3>
+                    <p>One line on why it's worth a look.</p>
+                    <p class="rec-meta"><span class="rec-field">Technology</span> · Mentioned in Week 2</p>
+                </li>
+                -->
+            </div>
+        </section>
     </main>
 
     <!-- FOOTER (same as index.html) -->
@@ -2604,6 +2747,13 @@
             });
         }, { rootMargin: '-45% 0px -50% 0px' });
         document.querySelectorAll('.week-sec').forEach(s => obs.observe(s));
+
+        // --- FELLOWS' RECOMMENDATIONS FILTER ---
+        document.querySelectorAll('.rec-chip').forEach(chip => chip.addEventListener('click', () => {
+            const f = chip.dataset.filter;
+            document.querySelectorAll('.rec-chip').forEach(c => c.setAttribute('aria-pressed', c === chip));
+            document.querySelectorAll('.rec').forEach(r => { r.hidden = !!f && r.dataset.field !== f; });
+        }));
     </script>
 </body>
 </html>
